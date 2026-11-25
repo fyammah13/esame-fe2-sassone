@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import MovieCard from '../components/MovieCard';
+import { getTmdbApiKey } from '../config';
 import type { MovieListItem, MovieSearchResponse } from '../types/movie';
 
 const URL_ELENCO =
-  'https://api.themoviedb.org/3/search/movie?query=The%20Lord%20of%20the%20Rings&include_adult=false&language=en-US&page=1&api_key=YOUR_TMDB_API_KEY';
+  'https://api.themoviedb.org/3/search/movie?query=The%20Lord%20of%20the%20Rings&include_adult=false&language=en-US&page=1&api_key=';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState<MovieListItem[]>([]);
@@ -16,7 +17,7 @@ const MoviesPage = () => {
         setLoading(true);
         setError(null);
 
-        const res = await fetch(URL_ELENCO);
+        const res = await fetch(`${URL_ELENCO}${getTmdbApiKey()}`);
         if (!res.ok) {
           throw new Error('Errore nel caricamento dei film');
         }

@@ -15,6 +15,14 @@ npm install
 npm run dev
 ```
 
+Prima di avviare l'app, crea un file `.env` nella root del progetto e inserisci la tua API Key TMDB:
+
+```env
+VITE_TMDB_API_KEY=la_tua_api_key
+```
+
+Puoi usare `.env.example` come riferimento. Il file `.env` è escluso da Git.
+
 Per creare la build di produzione:
 
 ```bash
