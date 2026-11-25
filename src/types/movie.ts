@@ -89,3 +89,7 @@ export type HeaderProps = {
 export type MovieCardProps = {
   movie: MovieListItem;
 };
+
+export type GenreTagProps = {
+  genre: Genre;
+};

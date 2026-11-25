@@ -82,7 +82,7 @@ a:hover {
 }
 
 .card__poster {
-  height: 260px;
+  height: 160px;
   border-bottom: 2px solid #333;
   background: repeating-linear-gradient(
     -45deg,

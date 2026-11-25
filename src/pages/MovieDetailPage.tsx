@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import BackLink from '../components/BackLink';
+import GenreTag from '../components/GenreTag';
 import { getTmdbApiKey } from '../config';
 import type { MovieDetail } from '../types/movie';
 import { formattaData } from '../utils';
@@ -42,9 +44,7 @@ const MovieDetailPage = () => {
   if (loading) {
     return (
       <section>
-        <Link className="back-link" to="/">
-          ← Torna all’elenco
-        </Link>
+        <BackLink />
         <p className="messaggio-stato">Caricamento dettaglio in corso...</p>
       </section>
     );
@@ -53,9 +53,7 @@ const MovieDetailPage = () => {
   if (error || !movie) {
     return (
       <section>
-        <Link className="back-link" to="/">
-          ← Torna all’elenco
-        </Link>
+        <BackLink />
         <p className="messaggio-stato">{error ?? 'Film non trovato.'}</p>
       </section>
     );
@@ -63,9 +61,7 @@ const MovieDetailPage = () => {
 
   return (
     <section>
-      <Link className="back-link" to="/">
-        ← Torna all’elenco
-      </Link>
+      <BackLink />
 
       <article className="detail">
         <div>
@@ -99,9 +95,7 @@ const MovieDetailPage = () => {
           {movie.genres.length > 0 && (
             <div className="detail__genres">
               {movie.genres.map((genre) => (
-                <span key={genre.id} className="genre">
-                  {genre.name}
-                </span>
+                <GenreTag key={genre.id} genre={genre} />
               ))}
             </div>
           )}
