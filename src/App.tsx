@@ -1,10 +1,18 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Shell from './components/Shell';
+import MoviesPage from './pages/MoviesPage';
+import MovieDetailPage from './pages/MovieDetailPage';
+
 const App = () => {
   return (
-    <div className="shell">
-      <main className="main">
-        <h1>Movie App</h1>
-      </main>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Shell />}>
+          <Route index element={<MoviesPage />} />
+          <Route path="movies/:id" element={<MovieDetailPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
